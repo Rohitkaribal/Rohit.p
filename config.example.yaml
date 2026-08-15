@@ -1,0 +1,40 @@
+# Omega Omni configuration example (YAML or JSON).
+# Copy to omega_omni.yaml and edit. API keys are read from environment by
+# default (see omega_omni/providers/registry.py for env var names); you may
+# also paste them under `keys:` — but prefer env vars to avoid leaking
+# secrets into git.
+
+# Restrict to a subset of providers (names from the built-in roster).
+# only:
+#   - openai
+#   - claude
+#   - deepseek
+
+# Explicit keys (optional; env vars are preferred).
+# keys:
+#   openai: sk-...
+#   deepseek: sk-...
+
+include_mock: false        # set true to always inject mock providers
+mock_count: 0
+
+min_rounds: 2
+max_rounds: 3
+quality_threshold: 0.75
+adversarial_round: true
+
+# Per-stage tuning. group_mode: shared (same pool) or disjoint (partition).
+# stage1:
+#   group_size: 12
+#   group_mode: shared
+#   temperature: 0.8
+#   max_concurrency: 8
+# stage2:
+#   group_size: 12
+#   temperature: 0.6
+# stage3:
+#   group_size: 12
+#   temperature: 0.3
+# stage4:
+#   group_size: 3
+#   temperature: 0.4
